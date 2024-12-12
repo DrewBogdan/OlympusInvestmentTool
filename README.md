@@ -3,7 +3,7 @@ Author: Drew Bogdan
 ## The Challange
 We(A couple friends of mine) have decided that together we want to make an investing bot to give money and see how the profit rolls if it does and how we could build a bot to read the market. but because we are all new to this and it would be tough to all start from the bottom and be at different levels of knowledge, We decided that by the new year we all want to have a basic bot running and building profit on simulated given cash, and then after 4 months we will reconvene and see where eachothers bots are, who made the most and why, and if there was a science to the best or luck then combine our now gotten knowledge to see where we can work together in a large bot to make money on the actual market. 
 
-## Major Pieces
+## Major Functions
 - Develop a options price calculator and profit calculator based on a stocks current data
 - Develop a bot to utilize information of a possible profit for an option based on likelihood following the stocks previous movement and current stigma for it online (webscraping?)
 - Develop a bot to scan and get status updates on a large set of stocks, either create one big one, or separate bots for each different area (Tech, Healthcare, Finance, Metals, Oil, etc)
@@ -26,7 +26,7 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Finish Discord Bot to monitor the progress of the stock amount, and the volatility of market and stock values (4 Days)
 - Get persistent stock management for the bot and set to run (2 days)
 
-#
+## Major Function Breakdown
 
 ### Options Profit Calculator (Hephaestus)
 - Plenty of tutorials online, start with this to get basic understanding of how stocks move, what goes into options profit, and getting started with actual investing values
@@ -57,7 +57,7 @@ We(A couple friends of mine) have decided that together we want to make an inves
 
 #
 ### Current Progress
-#### Day 1
+#### Day 1 (12/11/24)
 - Wrote the outline for how the bot should be built and researched APIs for simulated trading and actual trading
 
 #### Day 2
