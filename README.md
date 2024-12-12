@@ -57,10 +57,10 @@ We(A couple friends of mine) have decided that together we want to make an inves
 
 #
 ### Current Progress
-#### Day 1 (12/11/24)
+#### Day 1 (12/10/24)
 - Wrote the outline for how the bot should be built and researched APIs for simulated trading and actual trading
 
-#### Day 2
+#### Day 2 (12/11/24)
 - Named bot and each piece of the bot follows naming convention
 - Built out calculations for the black-scholes options calculation
 - Built log class to tag messages of their origin functions. will be useful as functions start to utilize eachother.
