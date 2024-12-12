@@ -1,7 +1,7 @@
 # *Olympus* Investment Tool
-
+Author: Drew Bogdan
 ## The Challange
-We(a couple friends of mine) have decided that together we want to make an investing bot to give money and see how the profit rolls if it does and how we could build a bot to read the market. but because we are all new to this and it would be tough to all start from the bottom and be at different levels of knowledge, We decided that by the new year we all want to have a basic bot running and building profit on simulated given cash, and then after 4 months we will reconvene and see where eachothers bots are, who made the most and why, and if there was a science to the best or luck then combine our now gotten knowledge to see where we can work together in a large bot to make money on the actual market. 
+We(A couple friends of mine) have decided that together we want to make an investing bot to give money and see how the profit rolls if it does and how we could build a bot to read the market. but because we are all new to this and it would be tough to all start from the bottom and be at different levels of knowledge, We decided that by the new year we all want to have a basic bot running and building profit on simulated given cash, and then after 4 months we will reconvene and see where eachothers bots are, who made the most and why, and if there was a science to the best or luck then combine our now gotten knowledge to see where we can work together in a large bot to make money on the actual market. 
 
 ## Major Pieces
 - Develop a options price calculator and profit calculator based on a stocks current data
@@ -53,8 +53,8 @@ We(a couple friends of mine) have decided that together we want to make an inves
 ### Real Time Investing Bot utilizing previously made bots (Zeus)
 - Move the bot to instead of trading on the simulated trading API to the Alpaca direct API and use actual money to start making trades and make money. 
 
-
-### Daily Progress
+#
+### Current Progress
 #### Day 1
 - Wrote the outline for how the bot should be built and researched APIs for simulated trading and actual trading
 
