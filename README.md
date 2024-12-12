@@ -26,6 +26,8 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Finish Discord Bot to monitor the progress of the stock amount, and the volatility of market and stock values (4 Days)
 - Get persistent stock management for the bot and set to run (2 days)
 
+#
+
 ### Options Profit Calculator (Hephaestus)
 - Plenty of tutorials online, start with this to get basic understanding of how stocks move, what goes into options profit, and getting started with actual investing values
 - Build as a class structure to then implement into a large cohesive bot program as the project builds
