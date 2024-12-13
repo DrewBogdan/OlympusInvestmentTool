@@ -5,4 +5,4 @@ class Log:
         self.TAG = tag
 
     def print(self, msg):
-        print(self.tag + " " + msg)
+        print(self.TAG + " " + msg)

@@ -13,10 +13,16 @@ We(A couple friends of mine) have decided that together we want to make an inves
 
 
 ### API's
-- Market Data API: https://polygon.io/pricing?product=stocks
+- ~~Market Data API: https://polygon.io/pricing?product=stocks~~
+- ~~Market Data API: https://www.alphavantage.co/documentation/~~
+- Market Data API: https://finazon.io/dataset/sip_non_pro
+  - Seems to have a really good deal for raw data unprocessed. 
 - Investing Data API (includes crypto): https://finnhub.io/pricing
 - Possible Simulation API: https://ninjatrader.com/trading-platform/trading-simulator/
 - Actual Investing API: https://alpaca.markets/
+  - They also offer APIs that are free for real time data, but with money in their brokerage could also offer it although it wont give me a clear price on how much that costs. 
+- Other Idea: ChatGPT api
+  - could just ask chatgpt for the information after training the instance to respond the correct way. might be cheaper if possible to get it to respond the correct way. need to talk to AJ about that with his extensive gpt work/knowledge
 
 
 ### Ideal 21 day plan
@@ -33,6 +39,7 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Build as a class structure to then implement into a large cohesive bot program as the project builds
 - Utilize the Black-Scholes method to calculate stocks, and ensure volatility is correctly calculated each time
 - Either make a set interest rate, or actively calculate with treasury bonds lol
+  - Screw that im just gunna make it a base one for now as its in the rough stages
 
 ### Likelihood Of Profit Bot with Options (Hades)
 - Bit more of an involved bot to build, use the options profit calculator to find options with large profit output that have a heavy positive sentiment in online forums (WSB) and general investing news sites
@@ -64,3 +71,8 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Named bot and each piece of the bot follows naming convention
 - Built out calculations for the black-scholes options calculation
 - Built log class to tag messages of their origin functions. will be useful as functions start to utilize eachother.
+
+#### Day 3 (12/12/24)
+- Research into shitty investment APIs and how they all cost money to do anything
+- Basically heavy research day, trouble getting motivation to work on much else with the annoying findings that its not easily accessable. stupid me for assuming that
+- did some work on Hephaestus to use the yfinance package for now to get data from yesterday. (or is it 15 minute delayed as it is last close, idk)

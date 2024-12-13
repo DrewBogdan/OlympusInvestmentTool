@@ -7,6 +7,7 @@ Reason: Hephaestus is the god of invention and forge, this is a tool to be used 
 import numpy as np
 from scipy.stats import norm
 import Log as l
+import yfinance as yf
 
 class Hephaestus:
 
@@ -93,4 +94,10 @@ class Hephaestus:
         # get all stock information needed for program
         # return list in dict or tuple*
         self.LOG.print("Gathering Information")
-        # TODO: Actually connect this to pull information from API
+        ticker = yf.Ticker(symb).history(period='1y')
+        rez = {"curr_price": round(ticker['Close'].iloc[-1], 6), "prices": [round(ticker['Close'].iloc[x], 6) for x in range(len(ticker['Close'].tolist()))]}
+        return rez
+
+
+h = Hephaestus()
+h.get_information('MSFT')
