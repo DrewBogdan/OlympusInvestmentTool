@@ -59,6 +59,12 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Use Woka as a template for the commands and responses, feed information through either a DB or a direct connection into the stock algorithm
 - Even better idea, have algorithm regularly print progress to a text file, have bot read from that text file to produce values
 
+### Date to Market days calculator (Kronos)
+- create a system that can take an experiation date and the current date and find the amount of market days between the 2
+- needs to trunkate divided by 252 as that is how many market days there are per year
+- does leap year affect this?
+- basically need to do business days but get rid of holidays
+
 ### Real Time Investing Bot utilizing previously made bots (Zeus)
 - Move the bot to instead of trading on the simulated trading API to the Alpaca direct API and use actual money to start making trades and make money. 
 
@@ -76,3 +82,10 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Research into shitty investment APIs and how they all cost money to do anything
 - Basically heavy research day, trouble getting motivation to work on much else with the annoying findings that its not easily accessable. stupid me for assuming that
 - did some work on Hephaestus to use the yfinance package for now to get data from yesterday. (or is it 15 minute delayed as it is last close, idk)
+
+#### Day 4 (12/13/24)
+- Did not get work done today
+
+#### Day 5 (12/14/24)
+- Worked to create Kronos, time calculator for dates. 
+- debated between an exact count of days or a close estimate with percentage chance. will have to try tommorow to see how the exact seems
