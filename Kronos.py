@@ -1,5 +1,7 @@
 
 import Log as l
+from datetime import date
+
 class Kronos:
 
     LOG = None
@@ -44,3 +46,12 @@ class Kronos:
     """
     def check_holidays(self, today, expire):
         return 0
+
+
+    def calculate_market_days_inaccurate(self, today, expire):
+        self.LOG.print("Inaccurate Calculation Running...")
+        delta = (expire - today).days
+        ratio = 252.03/365.25
+        days_til = delta*ratio
+        self.LOG.print(f"Inaccurate Calculation Completed with {days_til} days!")
+        return days_til

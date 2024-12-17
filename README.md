@@ -89,3 +89,13 @@ We(A couple friends of mine) have decided that together we want to make an inves
 #### Day 5 (12/14/24)
 - Worked to create Kronos, time calculator for dates. 
 - debated between an exact count of days or a close estimate with percentage chance. will have to try tommorow to see how the exact seems
+
+#### Day 6 (12/15/24)
+- Nothin
+
+#### Day 7 (12/16/24)
+- finished up basic version of kronos calculation and started connecting information to get basic options prices set up
+- honestly the innacurate timing is not too bad with early testing. should work for now until i get it to be much more sophisticated
+- Connected all the pieces in Hephestus and successfully calculated current options prices
+- Found bug where my call and put functions were reversed. Oops
+- Had idea to develop the bot to see theoretical value vs actual value of stocks to buy under values options chains

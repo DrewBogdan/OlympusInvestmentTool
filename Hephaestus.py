@@ -8,24 +8,29 @@ import numpy as np
 from scipy.stats import norm
 import Log as l
 import yfinance as yf
+from Kronos import Kronos
+from datetime import date, datetime
 
 class Hephaestus:
 
     TRADING_DAYS = 252
     INTEREST_RATE = 0.05
+    KRONOS = None
     LOG = None
 
     def __init__(self):
         self.LOG = l.Log("[HEPHAESTUS]")
+        self.KRONOS = Kronos()
         self.LOG.print("Initiating Hephaestus...")
 
 
-    def get_option_price(self, symb, strike, expr):
+    def get_option_price(self, symb, strike, expr, call):
         self.LOG.print("Job Submitted to Hephaestus...")
         info = self.get_information(symb)
-        #self.black_scholes_formula(info["curr_price"], strike, )
-        # TODO: Figure out how to get trading days between today and expr (NOTE: not just business days)
-
+        days_til = self.KRONOS.calculate_market_days_inaccurate(date.today(), expr)
+        price = self.black_scholes_formula(info["curr_price"], strike, days_til, call, info)
+        self.LOG.print(f"Job Completed. Current option for {symb} with a strike of {strike} on {expr} has a theoretical price of ${price}")
+        return price
 
     #############################################################
     #               The Black-Scholes Calculation               #
@@ -46,24 +51,26 @@ class Hephaestus:
         self.LOG.print("Initiating Black-Scholes Formula...")
         r = self.INTEREST_RATE # placeholder basic value til I figure out how to calculate
         sigma = self.calculate_volatility(symb["prices"])
+        # converts the days to years til
+        t = t/self.TRADING_DAYS
 
         if call:
             P = self.black_scholes_call(S, K, r, t, sigma)
         else:
             P = self.black_scholes_put(S, K, r, t, sigma)
 
-        self.LOG.print("Black-Scholes Formula Calculated!")
+        self.LOG.print("Black-Scholes Formula Completed!")
 
         return P
 
-    def black_scholes_call(self, S, K, r, t, sigma):
-        self.LOG.print("Calculating Call Price...")
+    def black_scholes_put(self, S, K, r, t, sigma):
+        self.LOG.print("Calculating Put Price...")
         d1, d2 = self.calc_d1_d2(S, K, r, t, sigma)
         C = K * np.exp(-r * t) * norm.cdf(-d2) - S * norm.cdf(-d1)
         return C
 
-    def black_scholes_put(self, S, K, r, t, sigma):
-        self.LOG.print("Calculating Put Price...")
+    def black_scholes_call(self, S, K, r, t, sigma):
+        self.LOG.print("Calculating Call Price...")
         d1, d2 = self.calc_d1_d2(S, K, r, t, sigma)
         P = S * norm.cdf(d1) - K * np.exp(-r * t) * norm.cdf(d2)
         return P
@@ -100,4 +107,4 @@ class Hephaestus:
 
 
 h = Hephaestus()
-h.get_information('MSFT')
+h.get_option_price("PAA", 25, date(2026, 1, 26), True)
