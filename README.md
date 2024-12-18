@@ -99,3 +99,6 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Connected all the pieces in Hephestus and successfully calculated current options prices
 - Found bug where my call and put functions were reversed. Oops
 - Had idea to develop the bot to see theoretical value vs actual value of stocks to buy under values options chains
+
+#### Day 8 (12/17/24)
+- Basic work on Athena today and some research into making the large stock searches through apache
