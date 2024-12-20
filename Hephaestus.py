@@ -28,7 +28,7 @@ class Hephaestus:
         self.LOG.print("Job Submitted to Hephaestus...")
         info = self.get_information(symb)
         days_til = self.KRONOS.calculate_market_days_inaccurate(date.today(), expr)
-        price = self.black_scholes_formula(info["curr_price"], strike, days_til, call, info)
+        price = round(self.black_scholes_formula(info["curr_price"], strike, days_til, call, info), 6)
         self.LOG.print(f"Job Completed. Current option for {symb} with a strike of {strike} on {expr} has a theoretical price of ${price}")
         return price
 
@@ -106,5 +106,5 @@ class Hephaestus:
         return rez
 
 
-h = Hephaestus()
-h.get_option_price("PAA", 25, date(2026, 1, 26), True)
+#h = Hephaestus()
+#h.get_option_price("PAA", 25, date(2026, 1, 26), True)

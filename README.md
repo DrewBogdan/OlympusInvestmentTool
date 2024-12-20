@@ -98,7 +98,17 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - honestly the innacurate timing is not too bad with early testing. should work for now until i get it to be much more sophisticated
 - Connected all the pieces in Hephestus and successfully calculated current options prices
 - Found bug where my call and put functions were reversed. Oops
-- Had idea to develop the bot to see theoretical value vs actual value of stocks to buy under values options chains
+- Had idea to develop the bot to see theoretical value vs actual value of stocks to buy undervalued options chains
 
 #### Day 8 (12/17/24)
-- Basic work on Athena today and some research into making the large stock searches through apache
+- Basic work on Athena today and some research into making the large stock searches through alpaca
+
+#### Day 9 (12/18/24)
+- Nothing done. recovery
+
+#### Day 10 (12/19/24)
+- Worked heavily on the Hermes bot today instead of Athena. Felt like it would be an easy jump to make progress on. eventually all testing will hopefully be through the bot
+- Got the bot set up on discord and token in the code
+- fixed around some code in hephaestus to round some stuff
+- Added util cog to run command functionality
+- want to set up the code to not recreate the hephaestus class every time a command is called. will look into that
