@@ -112,3 +112,15 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - fixed around some code in hephaestus to round some stuff
 - Added util cog to run command functionality
 - want to set up the code to not recreate the hephaestus class every time a command is called. will look into that
+
+#### Day 11 - 16
+- Holidays. No work
+
+#### Day 17
+- Significant work on Athena
+- Connected Athena information gathering to hermes to display in discord
+- Decided against doing heavy formatting as I am moving to the alpaca API soon
+- Worked with Dom to figure out the alpaca API
+- Set up the hermes bot to have multiple options due to structure text limits
+- Broke my brothers computer and had to stop immediately
+

@@ -36,3 +36,25 @@ class Athena:
         rez = {"curr_price": round(ticker['Close'].iloc[-1], 6),
                "prices": [round(ticker['Close'].iloc[x], 6) for x in range(len(ticker['Close'].tolist()))]}
         return rez
+
+    def single_stock_grab(self, symb, choice):
+        c = choice.lower()
+        if c == 'o':
+            pass
+        elif c == 'c':
+            pass
+        elif c == 'p':
+            pass
+        elif c == 'a':
+            pass
+        elif c == 'i':
+            self.single_stock_info(symb)
+        elif c == 'q':
+            pass
+
+    def single_stock_info(self, symb):
+        ticker = yf.Ticker(symb)
+        info = f"```Stock Info:```"
+        return info
+
+# Stock Calender: {ticker.calendar}\nAnalyst Price Targets: {ticker.analyst_price_targets}\nCurrent Price: {round(ticker.history(period='1d')['Close'].iloc[-1], 6)}
