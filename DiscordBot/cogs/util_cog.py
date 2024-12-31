@@ -45,13 +45,13 @@ class Util(commands.Cog):
             if symb is None:
                 await ctx.send("Missing Arguments for Info Command. ```Correct Usage: !info [Stock Symbol] [Section Choice]```")
                 return
-            if section is None or section.lower() not in ['o', 'a', 'c', 'i', 'q' 'p']:
+            if section is None or section.lower() not in ['o', 'a', 'c', 'i', 'q', 'p']:
                 # [O]verview, [A]nalyst, [C]alender, current [P]rice, company [I]nfo, [Q]uarterly statement
                 await ctx.send("Missing Section Choice. ```Possible Sections:\nO - General Overview of the stock\nC - Calender information of the stock"
                                "\nP - Current Price information of the stock\nA - Current analyst predictions of the stock\nI - Comapny Information of the stock\nQ - Current Quarterly information of the stock```")
                 return
             a = self.ATHENA
-            info = a.single_stock_info(symb)
+            info = a.single_stock_grab(symb, section.lower())
             await ctx.send(f"Info for the {symb} stock:\n{info}")
         except Exception as err:
             print(Exception, err)
