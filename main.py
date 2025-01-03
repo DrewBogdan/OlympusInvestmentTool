@@ -3,6 +3,7 @@ import asyncio
 from discord import Client
 from discord.ext.commands import Bot
 from discord.ext import commands
+from colorama import Fore, Back, Style
 
 from DiscordBot.Hermes import Hermes
 from DiscordBot.cogs import stock_cog
@@ -19,6 +20,6 @@ if __name__ == '__main__':
 
     asyncio.run(setup(bot))
 
-    print("[HERMES] bot starting up...")
+    print(Back.BLACK + Fore.CYAN + "[PROGRAM] bot starting up..." + Style.RESET_ALL)
 
     bot.run(token)

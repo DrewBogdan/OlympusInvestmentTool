@@ -6,7 +6,7 @@ class Kronos:
 
     LOG = None
     def __init__(self):
-        self.LOG = l.Log("[KRONOS]")
+        self.LOG = l.Log("[KRONOS]", "green")
         self.LOG.print("Initiating Kronos...")
 
     """

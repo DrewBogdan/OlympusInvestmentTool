@@ -22,7 +22,7 @@ class Hephaestus:
     LOG = None
 
     def __init__(self, athena):
-        self.LOG = l.Log("[HEPHAESTUS]")
+        self.LOG = l.Log("[HEPHAESTUS]", "red")
         self.KRONOS = Kronos()
         self.ATHENA = athena
         self.LOG.print("Initiating Hephaestus...")

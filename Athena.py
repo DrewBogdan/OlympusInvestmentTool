@@ -7,6 +7,7 @@ import yfinance as yf
 from datetime import datetime
 from alpaca.data.requests import StockLatestQuoteRequest, StockBarsRequest
 from alpaca.data import StockHistoricalDataClient, TimeFrame
+from colorama import Fore
 
 class Athena:
 
@@ -22,7 +23,7 @@ class Athena:
             dont have to recode every time. 
     """
     def __init__(self):
-        self.LOG = l.Log("[ATHENA]")
+        self.LOG = l.Log("[ATHENA]", "white")
         self.LOG.print("Initiating Athena...")
         self.LOG.print("Generating Client...")
         self.CLIENT = StockHistoricalDataClient(config.ALPACA_API_KEY, config.ALPACA_API_SECRET)
@@ -91,7 +92,6 @@ class Athena:
                f"\n Company Description: {res['longBusinessSummary']}" \
                f"\n 52 Week Low: ${res['fiftyTwoWeekLow']}" \
                f"\n 52 Week High: ${res['fiftyTwoWeekHigh']}```"
-        print(info)
         return info
 
     def single_stock_price(self, symb):
