@@ -124,3 +124,17 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Set up the hermes bot to have multiple options due to structure text limits
 - Broke my brothers computer and had to stop immediately
 
+#### Day 18
+- some more work on athena this time connecting the alpaca API to figure out how to implement it, weather thats in tandem with yfinance or not
+- got api keys set up and a secret config.py class
+
+#### Day 19-21
+- No work
+
+#### Overall result from 21 day goal
+- Not where I wanted to be.
+- No progress on actual trading (simulated or not) being done
+- Lots of progress with learning the APIs and understanding the market
+- Major milestones missed for analysis and descision making for purchases
+
+

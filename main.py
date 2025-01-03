@@ -5,10 +5,10 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 
 from DiscordBot.Hermes import Hermes
-from DiscordBot.cogs import util_cog
+from DiscordBot.cogs import stock_cog
 
 async def setup(bot):
-    await bot.add_cog(util_cog.Util(bot))
+    await bot.add_cog(stock_cog.Stocks(bot))
 
 if __name__ == '__main__':
     token = open('DiscordBot/token.txt').read()

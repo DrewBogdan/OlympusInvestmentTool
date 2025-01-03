@@ -2,14 +2,14 @@ from discord.ext import commands
 from datetime import date, datetime
 from Hephaestus import Hephaestus
 from Athena import  Athena
-class Util(commands.Cog):
+class Stocks(commands.Cog):
 
     HEPHAESTUS = None
     ATHENA = None
     def __init__(self, bot) -> None:
         self.bot = bot
-        self.HEPHAESTUS = Hephaestus()
         self.ATHENA = Athena()
+        self.HEPHAESTUS = Hephaestus(self.ATHENA)
 
     @commands.command(name='call', description='Checks the options call price for given symbol', pass_context=True)
     async def call(self, ctx, symb: str = None, strike: str = None, expr: str = None):

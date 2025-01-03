@@ -1,10 +1,12 @@
+from dateutil.relativedelta import relativedelta
+
 import config
 # Config acts as a secret class for this project outside of the discord bot. allows access to be easier without reading a txt file every time
 import Log as l
 import yfinance as yf
-import datetime
-from alpaca.data.requests import StockLatestQuoteRequest
-from alpaca.data.historical import StockHistoricalDataClient
+from datetime import datetime
+from alpaca.data.requests import StockLatestQuoteRequest, StockBarsRequest
+from alpaca.data import StockHistoricalDataClient, TimeFrame
 
 class Athena:
 
@@ -39,10 +41,25 @@ class Athena:
                 
     """
     def get_single_stock(self, symb):
-        self.LOG.print("Gathering Information...")
-        ticker = yf.Ticker(symb).history(period='1y')
-        rez = {"curr_price": round(ticker['Close'].iloc[-1], 6),
-               "prices": [round(ticker['Close'].iloc[x], 6) for x in range(len(ticker['Close'].tolist()))]}
+        self.LOG.print("Gathering Information for Internal Usage...")
+
+        d = (datetime.now() - relativedelta(years=1))
+
+        req = StockLatestQuoteRequest(symbol_or_symbols=[symb])
+
+        quote = self.CLIENT.get_stock_latest_quote(req)[symb.upper()]
+
+        req = StockBarsRequest(
+            symbol_or_symbols=[symb],
+            timeframe=TimeFrame.Day,
+            start=d
+        )
+
+        prices = self.CLIENT.get_stock_bars(req).df['close'].tolist()
+
+        rez = {"curr_price": quote.ask_price,
+               "prices": prices}
+
         return rez
 
     # [O]verview, [A]nalyst, [C]alender, current [P]rice, company [I]nfo, [Q]uarterly statement
@@ -62,16 +79,28 @@ class Athena:
             pass
 
     def single_stock_info(self, symb):
+        self.LOG.print("Gathering Stock Info Data...")
         ticker = yf.Ticker(symb)
-        info = f"```Stock Info: {ticker.info}```"
+        res = ticker.info
+        info = f"```{res['symbol']} Stock Info:" \
+               f"\n Company Name: {res['longName']} ({res['shortName']})" \
+               f"\n Website: {res['website']}" \
+               f"\n Headquarters Location: {res['city']}, {res['state']}" \
+               f"\n Industry: {res['industry']}" \
+               f"\n Employee Count: {res['fullTimeEmployees']}" \
+               f"\n Company Description: {res['longBusinessSummary']}" \
+               f"\n 52 Week Low: ${res['fiftyTwoWeekLow']}" \
+               f"\n 52 Week High: ${res['fiftyTwoWeekHigh']}```"
         print(info)
         return info
 
     def single_stock_price(self, symb):
+        self.LOG.print("Gathering Stock Price Data...")
         req = StockLatestQuoteRequest(symbol_or_symbols=[symb])
-        ticker = yf.Ticker(symb)
         quote = self.CLIENT.get_stock_latest_quote(req)[symb.upper()]
         price = f"```Current Price Info for {symb.upper()} Stock:\n Ask Price: ${quote.ask_price}\n Bid Price: ${quote.bid_price}\nTime: {quote.timestamp.strftime('%Y-%m-%d %H:%M:%S')} GMT\n```"
         return price
 
+    def single_stock_analyst(self, symb):
+        pass
 # Stock Calender: {ticker.calendar}\nAnalyst Price Targets: {ticker.analyst_price_targets}\nCurrent Price: {round(ticker.history(period='1d')['Close'].iloc[-1], 6)}

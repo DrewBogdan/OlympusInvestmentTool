@@ -8,6 +8,8 @@ import numpy as np
 from scipy.stats import norm
 import Log as l
 import yfinance as yf
+
+from Athena import Athena
 from Kronos import Kronos
 from datetime import date, datetime
 
@@ -16,17 +18,19 @@ class Hephaestus:
     TRADING_DAYS = 252
     INTEREST_RATE = 0.05
     KRONOS = None
+    ATHENA = None
     LOG = None
 
-    def __init__(self):
+    def __init__(self, athena):
         self.LOG = l.Log("[HEPHAESTUS]")
         self.KRONOS = Kronos()
+        self.ATHENA = athena
         self.LOG.print("Initiating Hephaestus...")
 
 
     def get_option_price(self, symb, strike, expr, call):
         self.LOG.print("Job Submitted to Hephaestus...")
-        info = self.get_information(symb)
+        info = self.ATHENA.get_single_stock(symb)
         days_til = self.KRONOS.calculate_market_days_inaccurate(date.today(), expr)
         price = round(self.black_scholes_formula(info["curr_price"], strike, days_til, call, info), 6)
         self.LOG.print(f"Job Completed. Current option for {symb} with a strike of {strike} on {expr} has a theoretical price of ${price}")
@@ -91,19 +95,6 @@ class Hephaestus:
         sigma = std_dev * np.sqrt(self.TRADING_DAYS)
         return sigma
 
-
-
-    #############################################################
-    #                     Stock API Functions                   #
-    #############################################################
-
-    def get_information(self, symb):
-        # get all stock information needed for program
-        # return list in dict or tuple*
-        self.LOG.print("Gathering Information")
-        ticker = yf.Ticker(symb).history(period='1y')
-        rez = {"curr_price": round(ticker['Close'].iloc[-1], 6), "prices": [round(ticker['Close'].iloc[x], 6) for x in range(len(ticker['Close'].tolist()))]}
-        return rez
 
 
 #h = Hephaestus()
