@@ -7,7 +7,6 @@ import yfinance as yf
 from datetime import datetime
 from alpaca.data.requests import StockLatestQuoteRequest, StockBarsRequest
 from alpaca.data import StockHistoricalDataClient, TimeFrame
-from colorama import Fore
 
 class Athena:
 
