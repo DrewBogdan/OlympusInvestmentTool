@@ -20,6 +20,8 @@ class Log:
             return Fore.GREEN
         elif color == "blue":
             return Fore.BLUE
+        elif color == "cyan":
+            return Fore.CYAN
 
     def print(self, msg):
-        print(self.COLOR + self.TAG + " " + msg + Style.RESET_ALL)
+        print(self.COLOR + self.TAG + " " + str(msg) + Style.RESET_ALL)

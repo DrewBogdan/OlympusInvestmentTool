@@ -138,3 +138,12 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Major milestones missed for analysis and descision making for purchases
 
 
+#### 1/23/25
+- Hiatus is over. we did not get where we wanted in the 21 days, but were just in it for the bot and completion.
+- Got significant work set up for getting candlestick data for minutes of the day
+- plotted the data using MLPFinance Library
+- The bot in discord will now display the candlestick charts when requested
+- next up is basic analysis of candlestick chart. need to put the data into computational format. Dataframe might be best option
+- created the new Theia class built entirely for visualizing stock data. 
+- Set up poseidon slightly more.
+

@@ -1,15 +1,20 @@
+import discord
 from discord.ext import commands
 from datetime import date, datetime
 from Hephaestus import Hephaestus
 from Athena import  Athena
+from Poseidon import Poseidon
+import traceback
 class Stocks(commands.Cog):
 
     HEPHAESTUS = None
     ATHENA = None
+    POSEIDON = None
     def __init__(self, bot) -> None:
         self.bot = bot
         self.ATHENA = Athena()
         self.HEPHAESTUS = Hephaestus(self.ATHENA)
+        self.POSEIDON = Poseidon(self.ATHENA, self.HEPHAESTUS)
 
     @commands.command(name='call', description='Checks the options call price for given symbol', pass_context=True)
     async def call(self, ctx, symb: str = None, strike: str = None, expr: str = None):
@@ -56,3 +61,20 @@ class Stocks(commands.Cog):
         except Exception as err:
             print(Exception, err)
             await ctx.send("Unknown Error. :)")
+
+    @commands.command(name='candlestick', description='Retrives the candlestick chart for a single stock symbol for today', pass_context=True)
+    async def candle(self, ctx, symb: str = None):
+        try:
+            if symb is None:
+                await ctx.send(
+                    "Missing Arguments for Info Command. ```Correct Usage: !candlestick [Stock Symbol]```")
+                return
+            a = self.ATHENA
+            candles = a.get_day_candlesticks(symb)
+            with open('candlefig.png', 'rb') as f:
+                picture = discord.File(f)
+                await ctx.send(f"Todays candlestick chart for {symb}:")
+                await ctx.send(file=picture)
+        except Exception as err:
+            print(traceback.format_exc())
+            await ctx.send("Very Unknown Error. :)")

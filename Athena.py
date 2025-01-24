@@ -4,9 +4,10 @@ import config
 # Config acts as a secret class for this project outside of the discord bot. allows access to be easier without reading a txt file every time
 import Log as l
 import yfinance as yf
-from datetime import datetime
+from datetime import datetime, time
 from alpaca.data.requests import StockLatestQuoteRequest, StockBarsRequest
 from alpaca.data import StockHistoricalDataClient, TimeFrame
+from Theia import Theia
 
 class Athena:
 
@@ -102,4 +103,23 @@ class Athena:
 
     def single_stock_analyst(self, symb):
         pass
+
+
+    def get_day_candlesticks(self, symb):
+        self.LOG.print(f"Getting candlesticks for today for {symb}...")
+        req = StockBarsRequest(symbol_or_symbols=[symb],
+                               timeframe=TimeFrame.Minute,
+                               start=datetime.combine(datetime.now(), time.min),
+                               end=datetime.combine(datetime.now(), time.max))
+        bars = self.CLIENT.get_stock_bars(req)
+
+        theia = Theia()
+        theia.candle_chart(bars[symb.upper()])
+
+        return bars[symb.upper()]
+
+
+
+
+
 # Stock Calender: {ticker.calendar}\nAnalyst Price Targets: {ticker.analyst_price_targets}\nCurrent Price: {round(ticker.history(period='1d')['Close'].iloc[-1], 6)}
