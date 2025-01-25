@@ -153,4 +153,4 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - changed returned data to be correct timezone
 - added key check to ensure fake or unvailable stocks not input
 - changed feed to be IEX, not the most accurate data, but able to be up to the minute. Going to keep it as that until change to paid tier for SIP data
-- Current Candlestick Proof: ![img.png](img.png)
+- Candlestick Working: ![candlestick image](candlestickproof.png)
