@@ -147,3 +147,9 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - created the new Theia class built entirely for visualizing stock data. 
 - Set up poseidon slightly more.
 
+#### 1/24/25
+- More work done for the candlestick charting
+- changed timezones to not only gather the correct data but also at the correct time
+- changed returned data to be correct timezone
+- added key check to ensure fake or unvailable stocks not input
+- changed feed to be IEX, not the most accurate data, but able to be up to the minute. Going to keep it as that until change to paid tier for SIP data

@@ -75,6 +75,8 @@ class Stocks(commands.Cog):
                 picture = discord.File(f)
                 await ctx.send(f"Todays candlestick chart for {symb}:")
                 await ctx.send(file=picture)
+        except KeyError as err:
+            await ctx.send(f"Stock Key {symb} does not exist or is not available for Hermes")
         except Exception as err:
             print(traceback.format_exc())
             await ctx.send("Very Unknown Error. :)")

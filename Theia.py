@@ -9,6 +9,8 @@ import Log as l
 import pandas as pd
 import matplotlib.pyplot as plt
 import mplfinance as mpf
+from datetime import timezone, datetime
+from zoneinfo import ZoneInfo
 
 class Theia:
 
@@ -34,13 +36,10 @@ class Theia:
 
 
     def convert_to_dataframe(self, candledata):
-        index = []
-        open = []
-        close = []
-        high = []
-        low = []
+        index, open, close, high, low = [], [], [], [], []
+
         for x in candledata:
-            index.append(x.timestamp)
+            index.append(x.timestamp.replace(tzinfo=timezone.utc).astimezone(ZoneInfo("America/New_York")))
             open.append(x.open)
             high.append(x.high)
             low.append(x.low)
@@ -51,9 +50,3 @@ class Theia:
         df.index = pd.DatetimeIndex(df['date'])
 
         return df
-
-    def split_up_down(self, df):
-        up = df[df.close >= df.open]
-        down = df[df.close < df.open]
-
-        return up, down

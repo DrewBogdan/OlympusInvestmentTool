@@ -12,6 +12,9 @@ async def setup(bot):
     await bot.add_cog(stock_cog.Stocks(bot))
 
 if __name__ == '__main__':
+
+    print(Back.BLACK + Fore.CYAN + "[PROGRAM] bot starting up..." + Style.RESET_ALL)
+
     token = open('DiscordBot/token.txt').read()
 
     intents=discord.Intents(messages=True, message_content=True, guilds=True, reactions=True)
@@ -19,7 +22,5 @@ if __name__ == '__main__':
     bot = Hermes(command_prefix='$', intents=intents)
 
     asyncio.run(setup(bot))
-
-    print(Back.BLACK + Fore.CYAN + "[PROGRAM] bot starting up..." + Style.RESET_ALL)
 
     bot.run(token)

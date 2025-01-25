@@ -5,6 +5,7 @@ import config
 import Log as l
 import yfinance as yf
 from datetime import datetime, time
+from zoneinfo import ZoneInfo
 from alpaca.data.requests import StockLatestQuoteRequest, StockBarsRequest
 from alpaca.data import StockHistoricalDataClient, TimeFrame
 from Theia import Theia
@@ -13,6 +14,7 @@ class Athena:
 
     LOG = None
     CLIENT = None
+    THEIA = None
     """
     Athena Class
         Idea is to build a class that can gather the data for the rest of the bots in both a user readable format
@@ -109,11 +111,16 @@ class Athena:
         self.LOG.print(f"Getting candlesticks for today for {symb}...")
         req = StockBarsRequest(symbol_or_symbols=[symb],
                                timeframe=TimeFrame.Minute,
-                               start=datetime.combine(datetime.now(), time.min),
-                               end=datetime.combine(datetime.now(), time.max))
+                               start=datetime.combine(datetime.now(ZoneInfo("America/New_York")), time.min),
+                               end=datetime.now(ZoneInfo("America/New_York")),
+                               feed='iex')
         bars = self.CLIENT.get_stock_bars(req)
 
-        theia = Theia()
+        if self.THEIA is None:
+            theia = Theia()
+            self.THEIA = theia
+        else:
+            theia = self.THEIA
         theia.candle_chart(bars[symb.upper()])
 
         return bars[symb.upper()]
