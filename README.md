@@ -11,7 +11,6 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - Develop a discord bot to report all data from these bots, giving updates on stock prices, and updates on portfoilo account
 - Change the investing from simulated investing to actual investing when the bot gets to a trusted direction (After the 4 month adjusting and extra dev period following the 21 day code-off)
 
-
 ### API's
 - ~~Market Data API: https://polygon.io/pricing?product=stocks~~
 - ~~Market Data API: https://www.alphavantage.co/documentation/~~
@@ -68,6 +67,11 @@ We(A couple friends of mine) have decided that together we want to make an inves
 ### Real Time Investing Bot utilizing previously made bots (Zeus)
 - Move the bot to instead of trading on the simulated trading API to the Alpaca direct API and use actual money to start making trades and make money. 
 
+## Current Functionality Proof
+### Options Calculation
+### Stock Information
+### Candlestick Charting
+- Candlestick Working: ![candlestick image](candlestickproof.png)
 #
 ### Current Progress
 #### Day 1 (12/10/24)
@@ -153,4 +157,3 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - changed returned data to be correct timezone
 - added key check to ensure fake or unvailable stocks not input
 - changed feed to be IEX, not the most accurate data, but able to be up to the minute. Going to keep it as that until change to paid tier for SIP data
-- Candlestick Working: ![candlestick image](candlestickproof.png)
