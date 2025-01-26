@@ -22,6 +22,8 @@ class Log:
             return Fore.BLUE
         elif color == "cyan":
             return Fore.CYAN
+        elif color == "morph":
+            return Fore.BLACK + Back.RED
 
     def print(self, msg):
         print(self.COLOR + self.TAG + " " + str(msg) + Style.RESET_ALL)

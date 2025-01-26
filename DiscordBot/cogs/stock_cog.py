@@ -10,6 +10,7 @@ class Stocks(commands.Cog):
     HEPHAESTUS = None
     ATHENA = None
     POSEIDON = None
+    LOG = None
     def __init__(self, bot) -> None:
         self.bot = bot
         self.ATHENA = Athena()
@@ -69,13 +70,15 @@ class Stocks(commands.Cog):
                 await ctx.send(
                     "Missing Arguments for Info Command. ```Correct Usage: !candlestick [Stock Symbol]```")
                 return
-            a = self.ATHENA
-            candles = a.get_day_candlesticks(symb)
+            p = self.POSEIDON
+            candles = p.get_candlesticks(symb)
+            p.identify_pivots(candles)
             with open('candlefig.png', 'rb') as f:
                 picture = discord.File(f)
                 await ctx.send(f"Todays candlestick chart for {symb}:")
                 await ctx.send(file=picture)
         except KeyError as err:
+            print(traceback.format_exc())
             await ctx.send(f"Stock Key {symb} does not exist or is not available for Hermes")
         except Exception as err:
             print(traceback.format_exc())

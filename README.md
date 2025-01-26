@@ -157,3 +157,11 @@ We(A couple friends of mine) have decided that together we want to make an inves
 - changed returned data to be correct timezone
 - added key check to ensure fake or unvailable stocks not input
 - changed feed to be IEX, not the most accurate data, but able to be up to the minute. Going to keep it as that until change to paid tier for SIP data
+
+#### 1/25/25
+- Got significant work done to start analyzing the data
+- Peaks and Valleys identification built for Poseidon.
+  - I dont think I should push code from the Poseidon class anymore as it is going to be my own algorithms. still debating. for now its kept off
+- Got really annoyed with my current way of testing functions by setting it up into the discord bot and testing through there, so i started building testing suite
+- Morpheus is the testing suite for all functionality of the bot from here on out. hoping to set it up similar to how it was in classes in college and have it run tests to pass or fail, and my goal is to get them to pass
+- will need modular entry of data, currently built out a function in athena to get data from friday the 23rd of january 2025 to use in testing.

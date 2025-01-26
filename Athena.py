@@ -1,10 +1,12 @@
+import json
+
 from dateutil.relativedelta import relativedelta
 
 import config
 # Config acts as a secret class for this project outside of the discord bot. allows access to be easier without reading a txt file every time
 import Log as l
 import yfinance as yf
-from datetime import datetime, time
+from datetime import datetime, time, timedelta
 from zoneinfo import ZoneInfo
 from alpaca.data.requests import StockLatestQuoteRequest, StockBarsRequest
 from alpaca.data import StockHistoricalDataClient, TimeFrame
@@ -111,9 +113,9 @@ class Athena:
         self.LOG.print(f"Getting candlesticks for today for {symb}...")
         req = StockBarsRequest(symbol_or_symbols=[symb],
                                timeframe=TimeFrame.Minute,
-                               start=datetime.combine(datetime.now(ZoneInfo("America/New_York")), time.min),
-                               end=datetime.now(ZoneInfo("America/New_York")),
-                               feed='iex')
+                               start=datetime.combine(datetime.now(ZoneInfo("America/New_York")), time.min) - timedelta(days=datetime.now().weekday() % 4),
+                               end=datetime.now(ZoneInfo("America/New_York")) - timedelta(days=datetime.now().weekday() % 4),
+                               )#feed='iex'
         bars = self.CLIENT.get_stock_bars(req)
 
         if self.THEIA is None:
@@ -125,8 +127,13 @@ class Athena:
 
         return bars[symb.upper()]
 
-
-
-
+    def get_day_historical(self, symb):
+        req = StockBarsRequest(symbol_or_symbols=[symb],
+                               timeframe=TimeFrame.Minute,
+                               start=datetime(2025, 1, 23, 9, 00, tzinfo=ZoneInfo(key='America/New_York')),
+                               end=datetime(2025, 1, 23, 17, 00, tzinfo=ZoneInfo(key='America/New_York')),
+                               )  # feed='iex'
+        bars = self.CLIENT.get_stock_bars(req)
+        return bars[symb]
 
 # Stock Calender: {ticker.calendar}\nAnalyst Price Targets: {ticker.analyst_price_targets}\nCurrent Price: {round(ticker.history(period='1d')['Close'].iloc[-1], 6)}
