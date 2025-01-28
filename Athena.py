@@ -127,11 +127,11 @@ class Athena:
 
         return bars[symb.upper()]
 
-    def get_day_historical(self, symb):
+    def get_day_test(self, symb):
         req = StockBarsRequest(symbol_or_symbols=[symb],
                                timeframe=TimeFrame.Minute,
-                               start=datetime(2025, 1, 23, 9, 00, tzinfo=ZoneInfo(key='America/New_York')),
-                               end=datetime(2025, 1, 23, 17, 00, tzinfo=ZoneInfo(key='America/New_York')),
+                               start=datetime(2025, 1, 27, 9, 00, tzinfo=ZoneInfo(key='America/New_York')),
+                               end=datetime(2025, 1, 27, 17, 00, tzinfo=ZoneInfo(key='America/New_York')),
                                )  # feed='iex'
         bars = self.CLIENT.get_stock_bars(req)
         return bars[symb]

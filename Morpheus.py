@@ -38,15 +38,15 @@ class Morpheus:
 
     def test_peaks(self, symb):
         self.LOG.print("================= PEAKS TEST =================")
-        self.LOG.print(f"Gathering Historical Data for {symb} on January 23rd 2025...")
-        hist = self.ATHENA.get_day_historical(symb)
+        self.LOG.print(f"Gathering Historical Data for {symb} on January 27th 2025...")
+        hist = self.ATHENA.get_day_test(symb)
         self.LOG.print("Data Gathered. Testing for Peaks...")
         peaks = self.POSEIDON.identify_peaks(hist)
         self.LOG.print(f"Poseidon gathered a total of {len(peaks)} peaks from historical data chart")
     def test_valleys(self, symb):
         self.LOG.print("================= VALLEYS TEST =================")
-        self.LOG.print(f"Gathering Historical Data for {symb} on January 23rd 2025...")
-        hist = self.ATHENA.get_day_historical(symb)
+        self.LOG.print(f"Gathering Historical Data for {symb} on January 27th 2025...")
+        hist = self.ATHENA.get_day_test(symb)
         self.LOG.print("Data Gathered. Testing for Valleys...")
         peaks = self.POSEIDON.identify_valleys(hist)
         self.LOG.print(f"Poseidon gathered a total of {len(peaks)} valleys from historical data chart")
